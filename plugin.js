@@ -107,7 +107,7 @@ class ImageminAvifWebpackPlugin {
 }
 
 function hookPlugin(compiler, onEmit) {
-    if (compiler.hooks && compiler.hooks.thisCompilation && compiler.hooks.processAssets) {
+    if (compiler.webpack.version && compiler.webpack.version.startsWith('5')) {
         // webpack 5.x
         compiler.hooks.thisCompilation.tap('ImageminAvifWebpackPlugin', compilation => {
             compilation.hooks.processAssets.tapAsync({
